@@ -1,4 +1,6 @@
-
+<?php
+    require_once "./partials/autorizacion.php";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,6 +20,7 @@
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <!--link rel="stylesheet" href="./css/style.css"-->
 
     <!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -266,14 +269,15 @@
                                     </div>
                                 </div>
                                 <div class="header-button-item mr-0 js-sidebar-btn">
-                                    <i class="zmdi zmdi-menu"></i>
+                                    <i class="zmdi zmdi-menu btn-menu"></i>
                                 </div>
+
                                 <div class="setting-menu js-right-sidebar d-none d-lg-block">
                                     <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
+                                        <!--div class="account-dropdown__item">
                                             <a href="iniciar_sesion.php">
                                                 <i class="zmdi zmdi-account"></i>Iniciar Sesión</a>
-                                        </div>
+                                        </div-->
                                         <div class="account-dropdown__item">
                                             <a href="#">
                                                 <i class="zmdi zmdi-settings"></i>Setting</a>

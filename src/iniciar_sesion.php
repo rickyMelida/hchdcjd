@@ -1,34 +1,3 @@
- <?php
-
- session_start();
-
- if (isset($_SESSION['user_id'])) {
-    header('Location: /s&r/index.php');
-  }
-
- require 'assets/base_datos.php';
-
-
- if (!empty($_POST['correo_sesion']) && !empty($_POST['contrasena_sesion'])) {
- 
-    $records = $conn->prepare('SELECT codigo_usu, nombre_usu, correo_usu, contrasena_usu, codigo_carg FROM usuario WHERE correo_usu = :correo');
-    $records->bindParam(':correo', $_POST['correo_sesion']);
-    $records->execute();
-    $rs = $records->fetch(PDO::FETCH_ASSOC);
-
-    $message = '';
-
-   if (count($rs) > 0 && password_verify($_POST['contrasena_sesion'], $rs['contrasena_usu'])) {
-     $_SESSION['codigo_usuario'] = $rs['codigo_usu'];
-     header('Location: /s&r/index.php');
-   } else {
-     $message ='Los Datos no Corresponden. Vuelva a intentar';
-   }
- }
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -80,13 +49,8 @@
                                     Sistema de Reportes
                                 </p>
                         </div>
-
-                        <?php if(!empty($message)): ?>
-                               <p class="centrado"> <?= $message ?></p>
-                         <?php endif; ?>
-
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="./partials/validar_usuario.php" method="post">
                                 <div class="form-group">
                                     <label>Direccion de Correo</label>
                                     <input class="au-input au-input--full" type="email" name="correo_sesion" placeholder="Correo">

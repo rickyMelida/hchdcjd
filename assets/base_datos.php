@@ -1,17 +1,38 @@
 <?php
 
-$server = 'localhost:3306';
-$username = 'root';
-$password = '';
-$database = 'informes-GAC';
 
 
+class baseDatos {
+  
+  private $server = 'localhost:3306';
+  private $username = 'root';
+  private $password = '';
+  private $database = 'informes-GAC';
 
-try {
-  $conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
+  public function conexion() {
+    $conn = mysqli_connect($this->server, $this->username, $this->password);
+  
+    return $conn;
+  }
 
-} catch (PDOException $e) {
-  die('Connection Failed: ' . $e->getMessage());
+  public function nueva_conexion($bd) {
+    $conn = mysqli_connect($this->server, $this->username, $this->password, $bd);
+    return $conn;
+  }
 }
+
+class resultado {
+  public function mostrar($sql) {
+    $con = new baseDatos();
+    $conectar = $con->conexion();
+
+    $result = mysqli_query($conectar, $sql);
+
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+  }
+}
+
+
 
 ?>

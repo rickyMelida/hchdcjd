@@ -1,0 +1,21 @@
+.padre {
+    padding: 20%;
+    margin: auto;
+}
+.select_bd {
+    display: block;
+    width: 500px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.select_bd option {
+    font:solid 36px 'Cambria';
+}
+
+@media(min-width:992px) {
+    .btn-menu {
+        display: none;
+    }
+}   
