@@ -1,18 +1,22 @@
 <?php
      require_once "../assets/base_datos.php";    
- 
-    $bd = $_POST['bd'];
-    $c = new baseDatos();
-     
-     if(isset($bd) && $bd != "mysql"){
-         $con_nueva = $c->nueva_conexion($bd);
-        
-         if($con_nueva) {
-             echo "Si, se establecio la nueva conexion con ".$bd;
-         }else {
-             echo "No, no se pudo establecer la conexion";
-         }
-     }
+    if(isset($_POST) && !empty($_POST)) {
+        $bd = $_POST['bd'];
+        $c = new baseDatos();
+
+        if(isset($bd) && $bd != "mysql"){
+        $con_nueva = $c->nueva_conexion($bd);
+
+        if($con_nueva) {
+            echo "Si, se establecio la nueva conexion con ".$bd;
+        }else {
+            echo "No, no se pudo establecer la conexion";
+        }
+        }
+    }else {
+        header("Location: ../partials/select_bd.php");
+    }
+    
 
 ?>
 <!DOCTYPE html>

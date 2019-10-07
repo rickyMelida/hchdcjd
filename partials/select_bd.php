@@ -8,6 +8,10 @@
     $obj  = new resultado();
     $sql = "SHOW DATABASES";
     $datos = $obj->mostrar($sql);
+    
+    if(isset($_POST) && $_POST['bd'] != "mysql"){
+        echo "Si se envio: ".$_POST['bd'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +57,9 @@
         </h1>
         <h2 class="text-center text-white" >Selecciona la Base de Datos</h2>
         <div class="row padre">
-            <form action="../src/iniciar_sesion.php" method="post" class="w-100 mt-5 pt-5">
+            <!--form action="../src/iniciar_sesion.php" method="post" class="w-100 mt-5 pt-5"-->
+            <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="w-100 mt-5 pt-5">
+
                 <select class="custom-select" name="bd">
                     <option class="text-center">Selecciona un servidor</option>
                     <?php 
@@ -61,7 +67,7 @@
                             echo "<option>".$key['Database']."</option>";
                         } 
                     ?>
-                </select> 
+                </select>
                 <input type="submit" class="btn btn-primary mt-5" value="Seleccionar"/>
             </form>   
         </div>

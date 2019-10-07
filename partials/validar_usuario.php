@@ -2,31 +2,50 @@
 
     include "../assets/base_datos.php";
 
-    $correo = $_POST['correo_sesion'];
-    $pass = $_POST['contrasena_sesion'];
-    $bd = $_POST['base_datos'];
+    if(isset($_POST) && !empty($_POST)) {
+        session_start();
 
-    $obj = new baseDatos();
+        $correo = $_POST['correo_sesion'];
+        $pass = $_POST['contrasena_sesion'];
+        $bd = $_POST['base_datos'];
 
-    $con = $obj->nueva_conexion($bd);
+        $obj = new baseDatos();
 
-    $sql_select =  "SELECT * from usuario ";
+        $con = $obj->nueva_conexion($bd);
 
-    $res = mysqli_query($con, $sql);
+        $sql_select =  "SELECT * from usuario ";
 
-    $result = mysqli_num_rows($res);
+        $res = mysqli_query($con, $sql_select);
 
-    if($con) {
-        echo "Si se conecto a la nueva base de datos";
+
+
+        if($con) {
+        if($result > 0) {
+            $resultados = mysqli_fetch_all($res, MYSQLI_ASSOC);
+
+            foreach ($resultados as $key) {
+                $_SESSION['usuario'] = $key['nombre_usu'];
+            }   
+            $result = mysqli_num_rows($res);
+
+            $var_session = $_SESSION['usuario'];
+
+            header ("Location: ../index.php");
+
+            
+        }else {
+            echo "<script>alert('Usuario o Contraseña incorrecto'); window.open('../src/iniciar_sesion.php', '_self');</script>";
+        }
+        }else {
+        header ("Location: ../src/errorDB.php");
+        }
     }else {
-        echo "No, no se conecto a la base de datos";
-    }
+        header ("Location: ./src/volver.php");
 
-    if($result > 0) {
-        echo "Si, existe el usuario";
-    }else {
-        echo "No, no existe el usuario, estoy en la bd ".$bd;
     }
+    
+
+    
 
 
 ?>
