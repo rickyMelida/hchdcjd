@@ -13,10 +13,6 @@
     margin-right: auto;
 }
 
-.select_bd option {
-    font:solid 36px 'Cambria';
-}
-
 @media(min-width:992px) {
     .btn-menu {
         display: none;
