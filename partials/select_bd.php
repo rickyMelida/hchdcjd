@@ -4,12 +4,6 @@
     $c = new baseDatos();
     $con = $c->conexion();
 
-    if(!$con) {
-        echo "No se pudo establecer la conexion";
-
-    }else {
-        echo "Conexion establecida";
-    }
 
     $obj  = new resultado();
     $sql = "SHOW DATABASES";
@@ -44,10 +38,20 @@
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
-    <title>Document</title>
+    <title>BD</title>
 </head>
-<body>
+<body id="slct">
     <div class="container">
+        <h1>
+            <?php 
+                if($con) {
+                    echo "Conexion establecida";
+                }else {
+                    echo "No se pudo establecer la BD";
+                }
+            ?>
+        </h1>
+        <h2>Selecciona la Base de Datos</h2>
         <div class="row padre">
             <select class="custom-select select_bd">
                 <?php 
@@ -60,6 +64,7 @@
                 <option value="2">Two</option>
                 <option value="3">Three</option-->
             </select>
+            
         </div>
     </div>
 

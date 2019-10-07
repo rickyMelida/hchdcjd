@@ -1,5 +1,8 @@
+#slct {
+    background: rgba(0, 0, 0, 0.3);
+}
 .padre {
-    padding: 20%;
+    padding: 15%;
     margin: auto;
 }
 .select_bd {

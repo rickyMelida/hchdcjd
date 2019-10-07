@@ -7,7 +7,6 @@ class baseDatos {
   private $server = 'localhost:3306';
   private $username = 'root';
   private $password = '';
-  private $database = 'informes-GAC';
 
   public function conexion() {
     $conn = mysqli_connect($this->server, $this->username, $this->password);
