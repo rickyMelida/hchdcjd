@@ -2,7 +2,13 @@
 
     include "../assets/base_datos.php";
 
-    if(isset($_POST) && !empty($_POST)) {
+    if(isset($_POST)) {
+        $bd = $_POST['base_datos'];
+
+        echo "La base de datos seleccionada es ".$bd;
+    }
+
+/*    if(isset($_POST) && !empty($_POST)) {
         session_start();
 
         $correo = $_POST['correo_sesion'];
@@ -45,7 +51,7 @@
     }
     
 
-    
+    */
 
 
 ?>

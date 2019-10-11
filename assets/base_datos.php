@@ -2,9 +2,9 @@
 
   class baseDatos {
     
-    private $server = 'localhost:3306';
+    private $server = 'localhost';
     private $username = 'root';
-    private $password = '';
+    private $password = '5181789781Ri-';
 
     public function conexion() {
       $conn = mysqli_connect($this->server, $this->username, $this->password);

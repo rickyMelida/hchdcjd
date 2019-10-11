@@ -1,22 +1,12 @@
 <?php
-     require_once "../assets/base_datos.php";    
-    if(isset($_POST) && !empty($_POST)) {
-        $bd = $_POST['bd'];
-        $c = new baseDatos();
-
-        if(isset($bd) && $bd != "mysql"){
-        $con_nueva = $c->nueva_conexion($bd);
-
-        if($con_nueva) {
-            echo "Si, se establecio la nueva conexion con ".$bd;
-        }else {
-            echo "No, no se pudo establecer la conexion";
-        }
-        }
-    }else {
-        header("Location: ../partials/select_bd.php");
+    require_once "../assets/base_datos.php";
+    if($_POST) {
+        $bd = $_POST['bd'];  
+        echo "La base de datos seleccionada es ".$bd;
+        
+        $obj = new baseDatos();
+        $db = $obj->nueva_conexion($bd);
     }
-    
 
 ?>
 <!DOCTYPE html>
@@ -98,6 +88,38 @@
                                     <a href="usuario.php">Registrate Aqui</a>
                                 </p>
                             </div>
+                            <div class="register-link">
+                                <a href="#" data-toggle="modal" data-target="#acceso">Setup</a>
+                            </div>
+
+                            <!--Modal de seleccion de la base de datos-->
+                            <div class="modal fade " id="acceso">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5>Iniciar sesion de administrador</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="../partials/select_bd.php" method="post">
+                                                <div class="form-group">
+                                                    <label for="usuario">usuario</label>
+                                                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <input type="submit" class="btn btn-primary" value="Acceder">
+                                            </form>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <!------------------------->
+
                         </div>
                     </div>
                 </div>
