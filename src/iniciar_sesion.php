@@ -1,5 +1,6 @@
 <?php
     require_once "../assets/base_datos.php";
+    $bd = '';
     if($_POST) {
         $bd = $_POST['bd'];  
         echo "La base de datos seleccionada es ".$bd;

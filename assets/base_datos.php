@@ -4,7 +4,7 @@
     
     private $server = 'localhost';
     private $username = 'root';
-    private $password = '5181789781Ri-';
+    private $password = '';
 
     public function conexion() {
       $conn = mysqli_connect($this->server, $this->username, $this->password);
@@ -16,18 +16,15 @@
       $conn = mysqli_connect($this->server, $this->username, $this->password, $bd);
       return $conn;
     }
-  }
 
-  class resultado {
-    public function mostrar($sql) {
-      $con = new baseDatos();
-      $conectar = $con->conexion();
-
+    public function mostrar($sql,$conectar) {
+      
       $result = mysqli_query($conectar, $sql);
 
       return mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     }
   }
+
 
 ?>
