@@ -9,9 +9,9 @@
         $con = $c->conexion();
 
 
-        $obj  = new resultado();
+        //$obj  = new resultado();
         $sql = "SHOW DATABASES";
-        $datos = $obj->mostrar($sql);
+        $datos = $c->mostrar($sql, $con);
         
     }else {
         echo "<script>alert('Usuario o contraseña de administrador incorrecta'); window.open('../src/iniciar_sesion.php','_self');</script>";
