@@ -1,7 +1,7 @@
 <?php
     require_once "./partials/autorizacion.php";
 
-?>
+?>  
 <!DOCTYPE html>
 <html lang="es">
 
