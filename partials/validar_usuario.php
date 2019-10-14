@@ -27,7 +27,9 @@
             foreach($r as $key) {
                 $_SESSION['usuario'] = $key['nombre_usu'];
             }
-            header("Location: ../index.php");
+            $var_session = $_SESSION['usuario'];
+            echo "El usuario es ". $var_session;
+            //header("Location: ../index.php?".$var_session);
         }else {
             echo "No hay";
         }
