@@ -28,8 +28,7 @@
                 $_SESSION['usuario'] = $key['nombre_usu'];
             }
             $var_session = $_SESSION['usuario'];
-            echo "El usuario es ". $var_session;
-            //header("Location: ../index.php?".$var_session);
+            header("Location: ../index.php");
         }else {
             echo "No hay";
         }
