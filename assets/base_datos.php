@@ -4,10 +4,11 @@
     
     private $server = 'localhost';
     private $username = 'root';
-    private $password = '';
+    private $password = '5181789781Ri-';
+    private $bd = "informesGAC";
 
     public function conexion() {
-      $conn = mysqli_connect($this->server, $this->username, $this->password);
+      $conn = mysqli_connect($this->server, $this->username, $this->password, $this->bd);
     
       return $conn;
     }

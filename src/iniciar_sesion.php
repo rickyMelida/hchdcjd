@@ -3,10 +3,15 @@
     $bd = '';
     if($_POST) {
         $bd = $_POST['bd'];  
-        echo "La base de datos seleccionada es ".$bd;
-        
-        $obj = new baseDatos();
-        $db = $obj->nueva_conexion($bd);
+        setcookie('servidor', $bd);      
+        if(empty($_COOKIE['servidor'])) {
+            echo("<script>alert('No se selecciono ninguna base de datos');</script>");
+        }else {  
+            echo "La base de datos seleccionada es ".$_COOKIE['servidor'];
+            
+            $obj = new baseDatos();
+            $db = $obj->nueva_conexion($bd);
+        }
     }
 
 ?>
@@ -70,7 +75,7 @@
                                 <div class="form-group">
                                     <label>Contraseña</label>
                                     <input class="au-input au-input--full" type="password" name="contrasena_sesion" placeholder="Contraseña">
-                                    <input type="hidden" name="base_datos" value="<?php echo $bd; ?>">
+                                    <input type="hidden" name="base_datos" value="<?php echo $_COOKIE['servidor']; ?>">
                                 </div>
                                 <div class="login-checkbox">
                                     <label>

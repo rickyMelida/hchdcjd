@@ -323,8 +323,8 @@
                         <div class="image img-cir img-120">
                             <img src="images/icon/avatar-big-01.jpg" alt="John Doe" />
                         </div>
-                        <h4 class="name">john doe</h4>
-                        <a href="#">Sign out</a>
+                        <h4 class="name"><?php echo $var_session; ?></h4>
+                        <a href="partials/signup.php">Sign out</a>
                     </div>
                     <nav class="navbar-sidebar2">
                         <ul class="list-unstyled navbar__list">

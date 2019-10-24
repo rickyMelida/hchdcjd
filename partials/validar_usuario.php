@@ -4,12 +4,12 @@
     $correo = $_POST['correo_sesion'];
     $pass = $_POST['contrasena_sesion'];
 
+
     if(isset($_POST) && !empty($correo) && !empty($pass)) {
 
         $bd = $_POST['base_datos'];
+
         session_start();
-
-
 
         $obj = new baseDatos();
         $con = $obj->nueva_conexion($bd);
@@ -28,9 +28,11 @@
                 $_SESSION['usuario'] = $key['nombre_usu'];
             }
             $var_session = $_SESSION['usuario'];
+
             header("Location: ../index.php");
+
         }else {
-            echo "No hay";
+            header("Location: ../src/errorDB.php");
         }
         
     }else {
