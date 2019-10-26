@@ -1,5 +1,12 @@
 <?php
     require_once "./partials/autorizacion.php";
+    
+    if(isset( $_COOKIE['correo'] )) {
+        echo "si existe";
+    }else {
+        echo "No existe tu cookie";
+    }
+
 
 ?>  
 <!DOCTYPE html>

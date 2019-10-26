@@ -3,23 +3,20 @@
 
     $correo = $_POST['correo_sesion'];
     $pass = $_POST['contrasena_sesion'];
-    $recordar = $_POST['recuerdame'];
-
 
     if(isset($_POST) && !empty($correo) && !empty($pass)) {
+
+        if($_POST['recuerdame'] == "on") {
+            
+            setcookie("correo", $correo, time() + 300);
+            setcookie("pass", $pass, time() + 300);
+        }
+
+
 
         $bd = $_POST['base_datos'];
 
         session_start();
-
-        if($recordar == "on"){
-
-            for ($i=0; $i < 1; $i++) { 
-                setcookie("correo", $correo);
-                setcookie("pass", $pass);
-            }
-
-        } 
 
 
         $obj = new baseDatos();
@@ -39,10 +36,8 @@
                 $_SESSION['usuario'] = $key['nombre_usu'];
             }
             $var_session = $_SESSION['usuario'];
-
-            //header("Location: ../index.php");
-            echo "Los datos de la cookies son ".$_COOKIE['correo'] . " y ". $_COOKIE['pass'];
-            
+           // header("Location: ../index.php");
+            echo "Existen cookies???? <br>";
 
         }else {
             header("Location: ../src/errorDB.php");

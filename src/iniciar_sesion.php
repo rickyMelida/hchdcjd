@@ -3,7 +3,9 @@
     $bd = '';
     if($_POST) {
         $bd = $_POST['bd'];  
-        setcookie('servidor', $bd);      
+        for ($i=0; $i < 2; $i++) { 
+            setcookie('servidor', $bd);      
+        }
         if(empty($_COOKIE['servidor'])) {
             echo("<script>alert('No se selecciono ninguna base de datos');</script>");
         }else {  
@@ -70,12 +72,12 @@
                             <form action="../partials/validar_usuario.php" method="post">
                                 <div class="form-group">
                                     <label>Direccion de Correo</label>
-                                    <input class="au-input au-input--full" type="email" name="correo_sesion" autocomplete="off" <?php if(isset($_COOKIE['correo'])) { echo "value=".$_COOKIE['correo'];}else { echo "placeholder=Correo" ;} ?> >
+                                    <input class="au-input au-input--full" type="email" name="correo_sesion"  <?php if(isset($_COOKIE['correo'])) { echo "value=".$_COOKIE['correo'];}else { echo "placeholder= Correo" ;} ?> >
                                 </div>
                                 <div class="form-group">
                                     <label>Contraseña</label>
-                                    <input class="au-input au-input--full" type="password" name="contrasena_sesion"  autocomplete="off" <?php if(isset($_COOKIE['pass'])) { echo "value=".$_COOKIE['pass'];}else { echo "placeholder=Password" ;} ?> >
-                                    <input type="hidden" name="base_datos" value="<?php echo $_COOKIE['servidor']; ?>">
+                                    <input class="au-input au-input--full" type="password" name="contrasena_sesion"  <?php if(isset($_COOKIE['pass'])){ echo "value=".$_COOKIE['pass'] ;}else { echo "placeholder=Password"; } ?>>
+                                    <input type="hidden" name="base_datos" value="<?php if(isset($_COOKIE['servidor'])) {echo $_COOKIE['servidor'];}else {echo " ";} ?>">
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
@@ -86,7 +88,7 @@
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">iniciar sesion</button>
-                               
+                               <input type="button" value="<?php if(isset($_COOKIE['correo'])) {echo $_COOKIE['correo'];}else {echo "sin cookies de correo";} ?>">
                             </form>
                             <div class="register-link">
                                 <p>
