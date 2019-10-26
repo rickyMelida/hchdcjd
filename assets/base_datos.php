@@ -4,7 +4,7 @@
     
     private $server = 'localhost';
     private $username = 'root';
-    private $password = '5181789781Ri-';
+    private $password = '';
     private $bd = "informesGAC";
 
     public function conexion() {

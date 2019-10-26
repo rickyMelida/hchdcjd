@@ -70,11 +70,11 @@
                             <form action="../partials/validar_usuario.php" method="post">
                                 <div class="form-group">
                                     <label>Direccion de Correo</label>
-                                    <input class="au-input au-input--full" type="email" name="correo_sesion"  <?php  echo "value = ".$_COOKIE['pass']; //if($_COOKIE['correo'] == ''){ echo "placeholder='Correo'";}else{ echo "value='".$_COOKIE['correo']."'";} ?> >
+                                    <input class="au-input au-input--full" type="email" name="correo_sesion" autocomplete="off" <?php if(isset($_COOKIE['correo'])) { echo "value=".$_COOKIE['correo'];}else { echo "placeholder=Correo" ;} ?> >
                                 </div>
                                 <div class="form-group">
                                     <label>Contraseña</label>
-                                    <input class="au-input au-input--full" type="password" name="contrasena_sesion"  <?php echo "value='".$_COOKIE['pass']."'"; //if(empty($_COOKIE['pass'])){ echo "placeholder='Contraseña'";}else if(isset($_COOKIE['pass'])){ echo "value='".$_COOKIE['pass']."'";}  ?> >
+                                    <input class="au-input au-input--full" type="password" name="contrasena_sesion"  autocomplete="off" <?php if(isset($_COOKIE['pass'])) { echo "value=".$_COOKIE['pass'];}else { echo "placeholder=Password" ;} ?> >
                                     <input type="hidden" name="base_datos" value="<?php echo $_COOKIE['servidor']; ?>">
                                 </div>
                                 <div class="login-checkbox">
